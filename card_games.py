@@ -80,12 +80,12 @@ while len(pl1) != 0 or len(pl2) != 0:
         num2 = 13
     if num1 > num2:
         print("ALL MINE!")
-        pl1 += pl1.pop(0)
-        pl1 += pl2.pop(0)
+        pl1.append(pl1.pop(0))
+        pl1.append(pl2.pop(0))
     elif num2 > num1:
         print("Ugh, fine. You get my card...")
-        pl2 += pl1.pop(0)
-        pl2 += pl2.pop(0)
+        pl2.append(pl1.pop(0))
+        pl2.append(pl2.pop(0))
     elif num1 == num2:
         while num1 == num2:
             print("Keep hitting ENTER: ")
@@ -154,14 +154,15 @@ while len(pl1) != 0 or len(pl2) != 0:
                 pl1 = pl1[5: len(pl1)]
                 t2 = pl2[0:5]
                 pl2 = pl2[5:len(pl1)]
-                pl1 += t2
+                pl1.append(t2)
+                print(pl1)
             elif num2 > num1:
                 print("Ugh, fine. You get my cards...\n", pl1[0:5], pl2[0:5])
                 t2 = pl2[0:5]
                 pl2 = pl2[5: len(pl1)]
                 t1 = pl1[0:5]
                 pl1 = pl1[5:len(pl1)]
-                pl2 += t1
+                pl2.append(t1)
             else:
                 input("3\n2\n1\nHit enter to flip card: ")
     input("3\n2\n1\nHit enter to flip card: ")
