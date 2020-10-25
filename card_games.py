@@ -19,7 +19,8 @@ num1 = 0
 num2 = 0
 shuf = 10
 pl2 = deck[27:len(deck)]
-while len(pl1) != 0 or len(pl2) != 0:
+while pl1 != [] and pl2 != []:
+    input("3\n2\n1\nHit enter to flip card: ")
     if shuf == 0:
         random.shuffle(deck)
         shuf = 10
@@ -96,7 +97,10 @@ while len(pl1) != 0 or len(pl2) != 0:
             print("clare\n")
             input()
             print("WAR!\nplayer 1: ", pl1[4], " player2: ", pl2[4])
-            if pl1[4] == "ace":
+            if len(pl1) < 6:
+                num1 = pl1[len(pl1)]
+                print(num1)
+            elif pl1[4] == "ace":
                 num1 = 100  # Aces beat kings
             elif pl1[4] == "two":
                 num1 = 2
@@ -122,7 +126,10 @@ while len(pl1) != 0 or len(pl2) != 0:
                 num1 = 12
             elif pl1[4] == "king":
                 num1 = 13
-            if pl2[4] == "ace":
+            if len(pl2) < 6:
+                num2 = pl2[len(pl2) - 1]
+                print(num2)
+            elif pl2[4] == "ace":
                 num2 = 100  # Aces beat kings
             elif pl2[4] == "two":
                 num2 = 2
@@ -150,19 +157,34 @@ while len(pl1) != 0 or len(pl2) != 0:
                 num2 = 13
             if num1 > num2:
                 print("ALL MINE!\n", pl1[0:5], pl2[0:5])
-                pl1.append(pl1[0:5])
+                pl1.append(pl1[0])
+                pl1.append(pl1[1])
+                pl1.append(pl1[2])
+                pl1.append(pl1[3])
+                pl1.append(pl1[4])
                 pl1 = pl1[5: len(pl1)]
-                pl1.append(pl2[0:5])
+                pl1.append(pl2[0])
+                pl1.append(pl2[1])
+                pl1.append(pl2[2])
+                pl1.append(pl2[3])
+                pl1.append(pl2[4])
                 pl2 = pl2[5:len(pl1)]
             elif num2 > num1:
                 print("Ugh, fine. You get my cards...\n", pl1[0:5], pl2[0:5])
-                pl2.append(pl2[0:5])
+                pl2.append(pl2[0])
+                pl2.append(pl2[1])
+                pl2.append(pl2[2])
+                pl2.append(pl2[3])
+                pl2.append(pl2[4])
                 pl2 = pl2[5: len(pl2)]
-                pl2.append(pl1[0:5])
+                pl2.append(pl1[0])
+                pl2.append(pl1[1])
+                pl2.append(pl1[2])
+                pl2.append(pl1[3])
+                pl2.append(pl1[4])
                 pl1 = pl1[5:len(pl1)]
             else:
                 input("3\n2\n1\nHit enter to flip card: ")
-    input("3\n2\n1\nHit enter to flip card: ")
 if len(pl1) == 0:
     print("Fine, you win. This is stupid.")
 else:
